@@ -8,11 +8,14 @@ function onUriKnown(newTab) {
   if (newTab.pinned) return;
   var url = newTab.url;
   var host = parseUri(url).host;
-  chrome.tabs.query({"pinned": true}, function(pinnedTabs) {
+  if (host !== "localhost") return;
+  chrome.tabs.query({"pinned": false}, function(pinnedTabs) {
     var matchedTab = _.find(pinnedTabs, function(pinnedTab) {
       return parseUri(pinnedTab.url).host === host;
     });
+    log(matchedTab);
     if (!matchedTab) return;
+    if (matchedTab.id === newTab.id) return;
     chrome.tabs.update(matchedTab.id, {"url": url, "active": true});
     chrome.tabs.remove(newTab.id);
     // make sure the new window is focused. on my version of chrome,

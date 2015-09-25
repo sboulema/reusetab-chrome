@@ -1,10 +1,10 @@
-# Reuse Tab Chrome Extension #
+# Reuse Localhost Tab Chrome Extension #
 
 ## Why? #
 
-Pinned tabs in Chrome are great. However, opening external links causes a new
-tab to be opened, even if the host of the new URL matches that in your pinned
-tab. This extension addresses that problem.
+Opening external links causes a new tab to be opened, 
+even if the host of the new URL matches that in your existing
+tabs. This extension addresses that problem.
 
 ## Changelog ##
 
